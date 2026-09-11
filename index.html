@@ -2,7 +2,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>EHSON ❤ AISHA</title>
-<link rel="manifest" id="manifestLink" href="blob:null/d19d8875-33db-4a0d-9030-58410ddddd49">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%2308050c'/%3E%3Ctext x='50' y='68' font-size='58' text-anchor='middle' fill='%23f2b6d2'%3E%E2%9D%A4%3C/text%3E%3C/svg%3E">
+<link rel="manifest" id="manifestLink" href="blob:null/49c695f0-5db4-4cff-977f-43dce241cf6e">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Ehson &amp; Aisha">
@@ -53,6 +54,16 @@
   #installGate{position:fixed; inset:0; z-index:50; display:none; align-items:center; justify-content:center; text-align:center; padding:48px 28px; background:var(--black); flex-direction:column;}
   body.gate-active #installGate{display:flex;}
   body.gate-active #app{display:none;}
+  body.pre-start #app{display:none;}
+  body.pre-start:not(.gate-active) #startScreen{display:flex;}
+  #startScreen{position:fixed; inset:0; z-index:40; display:none; align-items:center; justify-content:center; flex-direction:column; text-align:center; padding:40px 28px; background:var(--black);}
+  .start-heart{font-size:30px; margin-bottom:12px; opacity:.85; text-shadow:0 0 30px rgba(242,182,210,.4); animation:twinkle 3s ease-in-out infinite;}
+  .start-names{font-family:var(--serif); font-style:italic; font-size:22px; color:var(--glow); margin-bottom:8px; letter-spacing:.03em;}
+  .start-tagline{font-family:var(--serif); font-style:italic; font-size:15px; color:var(--pink-soft); margin-bottom:32px;}
+  #startLoading{margin-top:26px;}
+  .loader-dot{width:10px; height:10px; border-radius:50%; background:var(--pink); margin:0 auto 14px; box-shadow:0 0 20px 6px rgba(242,182,210,.5); animation:loaderpulse 1.4s ease-in-out infinite;}
+  @keyframes loaderpulse{0%,100%{transform:scale(.7); opacity:.6;} 50%{transform:scale(1.15); opacity:1;}}
+  #loadingText{font-size:12.5px; color:var(--ink-dim); letter-spacing:.06em;}
   .gate-heart{font-size:32px; margin-bottom:12px; opacity:.85; text-shadow:0 0 30px rgba(242,182,210,.4);}
   .gate-names{font-family:var(--serif); font-style:italic; font-size:20px; color:var(--glow); margin-bottom:28px; letter-spacing:.03em;}
   #installGate h2{font-size:20px;}
@@ -105,12 +116,14 @@
     border:1px solid var(--card-border);
   }
   .hero::before{
-    content:''; position:absolute; inset:0;
+    content:''; position:absolute; inset:0; z-index:1;
     background:
       radial-gradient(ellipse 100% 60% at 50% 0%, rgba(74,27,61,.35), transparent 60%),
       linear-gradient(180deg, rgba(8,5,12,.55) 0%, rgba(8,5,12,.55) 40%, rgba(8,5,12,.92) 100%);
   }
-  .hero > *{position:relative; z-index:1;}
+  .hero > *{position:relative; z-index:2;}
+  .hero > .hero-bg{position:absolute; inset:0; z-index:0; background-size:cover; background-position:center; opacity:0; transition:opacity 1.6s ease;}
+  .hero > .hero-bg.active{opacity:1;}
   .names{font-family:var(--serif); font-size:30px; font-style:italic; color:var(--glow); margin-bottom:18px; letter-spacing:.03em; cursor:pointer; user-select:none;}
   .names .amp{color:var(--pink); font-style:normal; margin:0 8px;}
   .quote{font-family:var(--serif); font-size:19px; font-style:italic; color:var(--ink); max-width:320px; line-height:1.55; margin-bottom:34px; white-space:pre-line;}
@@ -224,9 +237,9 @@
   ::-webkit-scrollbar{width:0; height:0;}
 </style>
 </head>
-<body class="gate-active">
+<body class="pre-start gate-active">
 
-<div id="stars"><div class="star" style="width: 2.526423px; height: 2.526423px; left: 96.404807%; top: 33.338658%; animation-delay: 1.885568s; animation-duration: 3.050261s;"></div><div class="star" style="width: 1.806202px; height: 1.806202px; left: 21.284493%; top: 83.751279%; animation-delay: 3.692118s; animation-duration: 4.70232s;"></div><div class="star" style="width: 2.5012px; height: 2.5012px; left: 43.416239%; top: 22.247671%; animation-delay: 0.705616s; animation-duration: 3.18124s;"></div><div class="star" style="width: 2.403269px; height: 2.403269px; left: 61.696896%; top: 48.117654%; animation-delay: 0.606068s; animation-duration: 3.034803s;"></div><div class="star" style="width: 2.21121px; height: 2.21121px; left: 95.250595%; top: 50.818903%; animation-delay: 2.089761s; animation-duration: 4.253369s;"></div><div class="star" style="width: 1.495451px; height: 1.495451px; left: 78.511711%; top: 15.052373%; animation-delay: 0.400383s; animation-duration: 4.122336s;"></div><div class="star" style="width: 0.835896px; height: 0.835896px; left: 55.35375%; top: 26.084211%; animation-delay: 2.156007s; animation-duration: 4.562441s;"></div><div class="star" style="width: 1.827327px; height: 1.827327px; left: 6.702389%; top: 75.534827%; animation-delay: 2.165789s; animation-duration: 3.85697s;"></div><div class="star" style="width: 2.123982px; height: 2.123982px; left: 33.053312%; top: 0.597547%; animation-delay: 3.818373s; animation-duration: 3.813475s;"></div><div class="star" style="width: 2.582656px; height: 2.582656px; left: 22.401111%; top: 35.653805%; animation-delay: 1.755278s; animation-duration: 3.8442s;"></div><div class="star" style="width: 2.123609px; height: 2.123609px; left: 33.508104%; top: 58.051917%; animation-delay: 2.930425s; animation-duration: 5.413333s;"></div><div class="star" style="width: 0.88466px; height: 0.88466px; left: 35.745305%; top: 12.592005%; animation-delay: 1.077963s; animation-duration: 3.28165s;"></div><div class="star" style="width: 2.456415px; height: 2.456415px; left: 6.080433%; top: 33.922763%; animation-delay: 1.792455s; animation-duration: 4.504875s;"></div><div class="star" style="width: 1.185633px; height: 1.185633px; left: 20.976962%; top: 94.360671%; animation-delay: 2.55083s; animation-duration: 5.650696s;"></div><div class="star" style="width: 1.515791px; height: 1.515791px; left: 21.968371%; top: 81.771448%; animation-delay: 0.727997s; animation-duration: 4.876112s;"></div><div class="star" style="width: 0.850477px; height: 0.850477px; left: 0.951068%; top: 51.075528%; animation-delay: 0.557825s; animation-duration: 4.773857s;"></div><div class="star" style="width: 1.243809px; height: 1.243809px; left: 53.536283%; top: 92.878605%; animation-delay: 1.006062s; animation-duration: 5.229649s;"></div><div class="star" style="width: 2.222978px; height: 2.222978px; left: 82.84554%; top: 69.669987%; animation-delay: 0.045408s; animation-duration: 3.445404s;"></div><div class="star" style="width: 1.343465px; height: 1.343465px; left: 18.2656%; top: 37.638228%; animation-delay: 2.44589s; animation-duration: 3.325653s;"></div><div class="star" style="width: 2.183239px; height: 2.183239px; left: 83.053488%; top: 82.568461%; animation-delay: 0.638835s; animation-duration: 5.414532s;"></div><div class="star" style="width: 1.261582px; height: 1.261582px; left: 56.878656%; top: 1.705662%; animation-delay: 3.943626s; animation-duration: 5.36519s;"></div><div class="star" style="width: 2.437689px; height: 2.437689px; left: 53.504308%; top: 34.134842%; animation-delay: 2.057442s; animation-duration: 3.210436s;"></div><div class="star" style="width: 1.988079px; height: 1.988079px; left: 3.733984%; top: 44.601415%; animation-delay: 0.605742s; animation-duration: 4.595374s;"></div><div class="star" style="width: 1.20339px; height: 1.20339px; left: 81.811287%; top: 41.190234%; animation-delay: 3.02087s; animation-duration: 4.66597s;"></div><div class="star" style="width: 1.34198px; height: 1.34198px; left: 0.01129%; top: 53.901765%; animation-delay: 2.449713s; animation-duration: 5.428219s;"></div><div class="star" style="width: 0.96442px; height: 0.96442px; left: 25.571073%; top: 83.899478%; animation-delay: 2.883173s; animation-duration: 3.027811s;"></div><div class="star" style="width: 1.997061px; height: 1.997061px; left: 50.365447%; top: 82.333965%; animation-delay: 0.864152s; animation-duration: 5.448653s;"></div><div class="star" style="width: 1.555764px; height: 1.555764px; left: 72.191565%; top: 36.361202%; animation-delay: 0.759647s; animation-duration: 4.664191s;"></div><div class="star" style="width: 2.56763px; height: 2.56763px; left: 29.900365%; top: 50.396112%; animation-delay: 3.052381s; animation-duration: 4.332231s;"></div><div class="star" style="width: 1.53596px; height: 1.53596px; left: 9.08765%; top: 36.188203%; animation-delay: 2.657123s; animation-duration: 5.527924s;"></div><div class="star" style="width: 0.710373px; height: 0.710373px; left: 53.578286%; top: 21.230354%; animation-delay: 0.104385s; animation-duration: 4.819163s;"></div><div class="star" style="width: 2.279389px; height: 2.279389px; left: 78.911862%; top: 37.948419%; animation-delay: 3.390421s; animation-duration: 3.867791s;"></div><div class="star" style="width: 2.005599px; height: 2.005599px; left: 29.654143%; top: 58.130235%; animation-delay: 2.086446s; animation-duration: 4.247695s;"></div><div class="star" style="width: 2.234109px; height: 2.234109px; left: 33.501377%; top: 67.647391%; animation-delay: 2.435883s; animation-duration: 4.540561s;"></div><div class="star" style="width: 2.156999px; height: 2.156999px; left: 68.616723%; top: 0.720498%; animation-delay: 1.838944s; animation-duration: 5.144376s;"></div><div class="star" style="width: 2.008055px; height: 2.008055px; left: 11.119988%; top: 54.798749%; animation-delay: 2.513079s; animation-duration: 4.056592s;"></div><div class="star" style="width: 1.735831px; height: 1.735831px; left: 3.414467%; top: 27.243461%; animation-delay: 1.895033s; animation-duration: 3.165053s;"></div><div class="star" style="width: 0.954099px; height: 0.954099px; left: 31.25522%; top: 20.567277%; animation-delay: 2.140452s; animation-duration: 3.274415s;"></div><div class="star" style="width: 2.439558px; height: 2.439558px; left: 67.775938%; top: 94.03174%; animation-delay: 0.045215s; animation-duration: 3.075541s;"></div><div class="star" style="width: 1.641857px; height: 1.641857px; left: 48.444807%; top: 33.662824%; animation-delay: 3.309997s; animation-duration: 5.519508s;"></div><div class="star" style="width: 0.609513px; height: 0.609513px; left: 97.113251%; top: 52.702496%; animation-delay: 2.094194s; animation-duration: 3.874164s;"></div><div class="star" style="width: 2.432692px; height: 2.432692px; left: 6.955332%; top: 61.048356%; animation-delay: 0.306697s; animation-duration: 5.466709s;"></div><div class="star" style="width: 1.883916px; height: 1.883916px; left: 92.024329%; top: 15.226402%; animation-delay: 1.704555s; animation-duration: 5.85988s;"></div><div class="star" style="width: 1.555698px; height: 1.555698px; left: 44.114629%; top: 60.040993%; animation-delay: 1.668929s; animation-duration: 3.976939s;"></div><div class="star" style="width: 2.15778px; height: 2.15778px; left: 74.315777%; top: 13.639091%; animation-delay: 0.851046s; animation-duration: 4.387545s;"></div><div class="star" style="width: 1.067311px; height: 1.067311px; left: 52.638426%; top: 97.158705%; animation-delay: 0.974824s; animation-duration: 5.666423s;"></div><div class="star" style="width: 1.499565px; height: 1.499565px; left: 45.53879%; top: 61.878739%; animation-delay: 3.421452s; animation-duration: 3.493278s;"></div><div class="star" style="width: 2.134393px; height: 2.134393px; left: 13.373972%; top: 73.979099%; animation-delay: 0.064139s; animation-duration: 4.896006s;"></div><div class="star" style="width: 2.10856px; height: 2.10856px; left: 11.678092%; top: 82.088777%; animation-delay: 0.587817s; animation-duration: 3.151663s;"></div><div class="star" style="width: 2.381728px; height: 2.381728px; left: 91.077259%; top: 47.449743%; animation-delay: 1.019157s; animation-duration: 3.584615s;"></div><div class="star" style="width: 2.44201px; height: 2.44201px; left: 30.44141%; top: 50.803554%; animation-delay: 2.740633s; animation-duration: 3.382064s;"></div><div class="star" style="width: 1.511716px; height: 1.511716px; left: 86.911509%; top: 55.712632%; animation-delay: 2.049855s; animation-duration: 5.012515s;"></div><div class="star" style="width: 0.911209px; height: 0.911209px; left: 35.791274%; top: 87.868132%; animation-delay: 1.449216s; animation-duration: 4.917791s;"></div><div class="star" style="width: 1.695685px; height: 1.695685px; left: 42.744371%; top: 85.079388%; animation-delay: 0.678563s; animation-duration: 3.601361s;"></div><div class="star" style="width: 1.066283px; height: 1.066283px; left: 17.16694%; top: 68.661919%; animation-delay: 2.164068s; animation-duration: 3.370062s;"></div><div class="star" style="width: 1.660462px; height: 1.660462px; left: 60.058415%; top: 9.64377%; animation-delay: 2.090352s; animation-duration: 4.102003s;"></div><div class="star" style="width: 1.92342px; height: 1.92342px; left: 71.054705%; top: 63.498809%; animation-delay: 2.257444s; animation-duration: 5.598s;"></div><div class="star" style="width: 0.955613px; height: 0.955613px; left: 4.206415%; top: 93.599173%; animation-delay: 2.445083s; animation-duration: 5.864605s;"></div><div class="star" style="width: 2.025149px; height: 2.025149px; left: 15.998902%; top: 10.841485%; animation-delay: 2.535774s; animation-duration: 4.022188s;"></div><div class="star" style="width: 1.740579px; height: 1.740579px; left: 95.867251%; top: 84.367536%; animation-delay: 3.847948s; animation-duration: 3.629068s;"></div></div>
+<div id="stars"><div class="star" style="width: 2.312189px; height: 2.312189px; left: 30.889328%; top: 99.394359%; animation-delay: 3.485488s; animation-duration: 3.216498s;"></div><div class="star" style="width: 1.897958px; height: 1.897958px; left: 80.333618%; top: 64.693481%; animation-delay: 0.684081s; animation-duration: 3.325209s;"></div><div class="star" style="width: 1.199212px; height: 1.199212px; left: 59.895908%; top: 53.461623%; animation-delay: 3.503154s; animation-duration: 4.145054s;"></div><div class="star" style="width: 0.741076px; height: 0.741076px; left: 70.961071%; top: 33.110783%; animation-delay: 2.03753s; animation-duration: 4.255286s;"></div><div class="star" style="width: 2.423749px; height: 2.423749px; left: 3.398548%; top: 99.168482%; animation-delay: 0.194443s; animation-duration: 5.268765s;"></div><div class="star" style="width: 1.541396px; height: 1.541396px; left: 17.881966%; top: 50.676651%; animation-delay: 1.266921s; animation-duration: 4.282507s;"></div><div class="star" style="width: 2.385015px; height: 2.385015px; left: 10.065564%; top: 16.623664%; animation-delay: 1.212411s; animation-duration: 3.41761s;"></div><div class="star" style="width: 0.674177px; height: 0.674177px; left: 47.608457%; top: 40.072389%; animation-delay: 3.287903s; animation-duration: 3.139346s;"></div><div class="star" style="width: 1.146878px; height: 1.146878px; left: 75.046739%; top: 73.913756%; animation-delay: 2.91364s; animation-duration: 3.582282s;"></div><div class="star" style="width: 2.347813px; height: 2.347813px; left: 93.152029%; top: 12.295837%; animation-delay: 2.65765s; animation-duration: 3.259011s;"></div><div class="star" style="width: 2.174911px; height: 2.174911px; left: 35.927624%; top: 76.257616%; animation-delay: 3.592223s; animation-duration: 5.098662s;"></div><div class="star" style="width: 1.378445px; height: 1.378445px; left: 47.033812%; top: 31.761684%; animation-delay: 3.979883s; animation-duration: 4.68931s;"></div><div class="star" style="width: 1.27153px; height: 1.27153px; left: 25.975346%; top: 4.849321%; animation-delay: 3.351281s; animation-duration: 4.110141s;"></div><div class="star" style="width: 2.381128px; height: 2.381128px; left: 45.692751%; top: 50.613382%; animation-delay: 1.17862s; animation-duration: 3.105525s;"></div><div class="star" style="width: 1.107492px; height: 1.107492px; left: 57.33692%; top: 82.754129%; animation-delay: 3.021715s; animation-duration: 4.228453s;"></div><div class="star" style="width: 1.243976px; height: 1.243976px; left: 55.799498%; top: 10.418033%; animation-delay: 0.735555s; animation-duration: 3.367461s;"></div><div class="star" style="width: 2.181834px; height: 2.181834px; left: 41.15293%; top: 30.636804%; animation-delay: 3.716908s; animation-duration: 4.464587s;"></div><div class="star" style="width: 1.767316px; height: 1.767316px; left: 66.462795%; top: 97.339864%; animation-delay: 3.689961s; animation-duration: 4.418106s;"></div><div class="star" style="width: 0.637392px; height: 0.637392px; left: 3.026245%; top: 59.13088%; animation-delay: 1.930979s; animation-duration: 3.408986s;"></div><div class="star" style="width: 1.174676px; height: 1.174676px; left: 12.124096%; top: 70.016744%; animation-delay: 0.942311s; animation-duration: 3.890822s;"></div><div class="star" style="width: 0.812309px; height: 0.812309px; left: 23.646166%; top: 58.111166%; animation-delay: 0.607026s; animation-duration: 4.424615s;"></div><div class="star" style="width: 1.106518px; height: 1.106518px; left: 50.332712%; top: 29.354177%; animation-delay: 0.89865s; animation-duration: 4.531788s;"></div><div class="star" style="width: 1.561574px; height: 1.561574px; left: 15.573194%; top: 53.218699%; animation-delay: 0.806287s; animation-duration: 5.040808s;"></div><div class="star" style="width: 1.889009px; height: 1.889009px; left: 53.717022%; top: 54.988477%; animation-delay: 1.812703s; animation-duration: 3.255513s;"></div><div class="star" style="width: 2.423222px; height: 2.423222px; left: 63.572954%; top: 37.694712%; animation-delay: 2.098797s; animation-duration: 5.479865s;"></div><div class="star" style="width: 1.008302px; height: 1.008302px; left: 47.461961%; top: 91.76767%; animation-delay: 1.08251s; animation-duration: 5.385969s;"></div><div class="star" style="width: 0.990491px; height: 0.990491px; left: 24.163631%; top: 19.643729%; animation-delay: 1.081898s; animation-duration: 3.40513s;"></div><div class="star" style="width: 1.218649px; height: 1.218649px; left: 96.211579%; top: 8.246731%; animation-delay: 3.516717s; animation-duration: 4.904109s;"></div><div class="star" style="width: 1.497814px; height: 1.497814px; left: 69.775877%; top: 20.142766%; animation-delay: 0.352691s; animation-duration: 4.783232s;"></div><div class="star" style="width: 1.441283px; height: 1.441283px; left: 27.136394%; top: 1.345529%; animation-delay: 0.435252s; animation-duration: 5.877964s;"></div><div class="star" style="width: 1.269505px; height: 1.269505px; left: 66.923313%; top: 4.06943%; animation-delay: 0.180477s; animation-duration: 4.539867s;"></div><div class="star" style="width: 1.698137px; height: 1.698137px; left: 36.376358%; top: 7.499058%; animation-delay: 2.795961s; animation-duration: 5.823424s;"></div><div class="star" style="width: 1.841549px; height: 1.841549px; left: 38.745517%; top: 61.998922%; animation-delay: 3.630736s; animation-duration: 4.055959s;"></div><div class="star" style="width: 1.446496px; height: 1.446496px; left: 72.630041%; top: 90.163089%; animation-delay: 3.961887s; animation-duration: 3.13479s;"></div><div class="star" style="width: 2.068234px; height: 2.068234px; left: 69.284313%; top: 2.291488%; animation-delay: 3.912642s; animation-duration: 3.426467s;"></div><div class="star" style="width: 1.258925px; height: 1.258925px; left: 84.93245%; top: 58.2302%; animation-delay: 2.133144s; animation-duration: 5.243041s;"></div><div class="star" style="width: 0.689221px; height: 0.689221px; left: 27.78175%; top: 9.158835%; animation-delay: 3.521245s; animation-duration: 4.493896s;"></div><div class="star" style="width: 0.952282px; height: 0.952282px; left: 39.874759%; top: 84.332029%; animation-delay: 0.465225s; animation-duration: 4.331394s;"></div><div class="star" style="width: 2.360715px; height: 2.360715px; left: 59.285113%; top: 74.46378%; animation-delay: 3.780185s; animation-duration: 5.406877s;"></div><div class="star" style="width: 1.47175px; height: 1.47175px; left: 92.477443%; top: 53.579028%; animation-delay: 1.347266s; animation-duration: 3.23789s;"></div><div class="star" style="width: 1.89682px; height: 1.89682px; left: 52.067068%; top: 32.165353%; animation-delay: 0.237938s; animation-duration: 4.7577s;"></div><div class="star" style="width: 1.151939px; height: 1.151939px; left: 91.939816%; top: 29.594097%; animation-delay: 0.866869s; animation-duration: 3.611705s;"></div><div class="star" style="width: 1.344434px; height: 1.344434px; left: 42.391387%; top: 46.497832%; animation-delay: 2.410588s; animation-duration: 3.010188s;"></div><div class="star" style="width: 2.443527px; height: 2.443527px; left: 8.567409%; top: 11.495123%; animation-delay: 2.71246s; animation-duration: 4.516589s;"></div><div class="star" style="width: 0.63027px; height: 0.63027px; left: 5.176595%; top: 86.516266%; animation-delay: 0.133075s; animation-duration: 3.258763s;"></div><div class="star" style="width: 1.65635px; height: 1.65635px; left: 54.338566%; top: 3.452898%; animation-delay: 0.439146s; animation-duration: 3.48754s;"></div><div class="star" style="width: 1.064509px; height: 1.064509px; left: 78.721209%; top: 29.053128%; animation-delay: 3.424983s; animation-duration: 4.522463s;"></div><div class="star" style="width: 0.759207px; height: 0.759207px; left: 78.122846%; top: 17.585045%; animation-delay: 0.505255s; animation-duration: 4.300033s;"></div><div class="star" style="width: 0.682328px; height: 0.682328px; left: 43.256388%; top: 87.785676%; animation-delay: 0.589869s; animation-duration: 3.066787s;"></div><div class="star" style="width: 0.715978px; height: 0.715978px; left: 26.959699%; top: 99.18186%; animation-delay: 0.830061s; animation-duration: 3.815809s;"></div><div class="star" style="width: 1.793685px; height: 1.793685px; left: 55.363365%; top: 60.555974%; animation-delay: 0.779764s; animation-duration: 5.715353s;"></div><div class="star" style="width: 1.681631px; height: 1.681631px; left: 69.70258%; top: 21.483556%; animation-delay: 3.261802s; animation-duration: 5.41172s;"></div><div class="star" style="width: 1.532163px; height: 1.532163px; left: 48.105044%; top: 2.38863%; animation-delay: 3.905074s; animation-duration: 3.764297s;"></div><div class="star" style="width: 1.467249px; height: 1.467249px; left: 77.312224%; top: 10.559143%; animation-delay: 3.146667s; animation-duration: 4.974805s;"></div><div class="star" style="width: 2.079922px; height: 2.079922px; left: 99.192631%; top: 93.839836%; animation-delay: 0.476725s; animation-duration: 3.032374s;"></div><div class="star" style="width: 1.883268px; height: 1.883268px; left: 40.510757%; top: 22.122556%; animation-delay: 0.741199s; animation-duration: 4.444452s;"></div><div class="star" style="width: 1.623446px; height: 1.623446px; left: 65.036414%; top: 36.528647%; animation-delay: 1.282312s; animation-duration: 3.153442s;"></div><div class="star" style="width: 2.149791px; height: 2.149791px; left: 52.92973%; top: 16.47917%; animation-delay: 0.237027s; animation-duration: 4.028965s;"></div><div class="star" style="width: 2.357996px; height: 2.357996px; left: 6.488489%; top: 45.048082%; animation-delay: 1.351235s; animation-duration: 5.878497s;"></div><div class="star" style="width: 1.153028px; height: 1.153028px; left: 78.796457%; top: 56.237349%; animation-delay: 2.573653s; animation-duration: 5.521759s;"></div></div>
 
 <div id="installGate">
   <div class="gate-heart">❤</div>
@@ -239,7 +252,19 @@
   <div id="gateStepsAndroid" class="gate-steps" style="display:none;">
     <p>1. Нажми на меню ⋮ в браузере<br>2. Выбери <b>«Установить приложение»</b> или <b>«Добавить на главный экран»</b><br>3. Открой приложение с главного экрана</p>
   </div>
-  <button class="btn" id="androidInstallBtn" style="display:none; margin-top:16px;">Установить приложение</button>
+  <p id="androidAutoHint" style="display:none; font-size:12.5px; color:var(--pink-soft); margin-top:14px;">Нажми кнопку — приложение установится автоматически.</p>
+  <button class="btn" id="androidInstallBtn" style="display:none; margin-top:10px;">Установить приложение</button>
+</div>
+
+<div id="startScreen">
+  <div class="start-heart">❤</div>
+  <div class="start-names">EHSON ❤ AISHA</div>
+  <p class="start-tagline">Пространство, которое ждало тебя.</p>
+  <button class="btn" id="startBtn">Начать</button>
+  <div id="startLoading" style="display:none;">
+    <div class="loader-dot"></div>
+    <p id="loadingText">Загрузка…</p>
+  </div>
 </div>
 
 <div id="ytPlayerContainer" style="position:fixed; width:1px; height:1px; overflow:hidden; opacity:0; pointer-events:none; z-index:-1;"></div>
@@ -249,7 +274,7 @@
 
     <!-- HOME -->
     <section class="screen active" id="screen-home">
-      <div class="hero" id="hero" style="background-image: none;">
+      <div class="hero" id="hero">
         <button class="secret-star" id="secretStar">⭐</button>
         <div class="finale" id="finale">
           <div class="dot"></div>
@@ -265,7 +290,7 @@
           <div class="mystery-banner">Осталось совсем немного…</div>
           <div class="countdown-num" id="cdDays">89</div>
           <div class="countdown-label" id="cdDaysLabel">ДНЕЙ</div>
-          <div class="countdown-clock" id="cdClock">16 : 58 : 40</div>
+          <div class="countdown-clock" id="cdClock">16 : 31 : 41</div>
           <div class="countdown-sub">до нашего особенного дня</div>
           <div class="minimal-msg" id="minimalMsg"></div>
           <button class="heart-btn" id="heartBtn">♡ Нажми на сердце</button>
@@ -339,13 +364,23 @@
         <div class="field"><label>Дата и время особого дня</label><input type="datetime-local" id="setTarget"></div>
         <div class="field"><label>Сообщение под сердцем</label><textarea id="setHeart"></textarea></div>
         <div class="field"><label>Финальное сообщение (когда таймер закончится)</label><textarea id="setFinal"></textarea></div>
-        <div class="field"><label>Музыка — ссылка на YouTube</label><input type="text" id="setYoutube" placeholder="https://youtu.be/..."></div>
+        <div class="field"><label>Фоновая музыка — вариант 1 (YouTube)</label><input type="text" id="setYoutube1" placeholder="https://youtu.be/..."></div>
+        <div class="field"><label>Фоновая музыка — вариант 2 (YouTube)</label><input type="text" id="setYoutube2" placeholder="https://youtu.be/..."></div>
+        <div class="field"><label>Фоновая музыка — вариант 3 (YouTube)</label><input type="text" id="setYoutube3" placeholder="https://youtu.be/..."></div>
         <button class="btn" id="saveMainBtn">Сохранить</button>
       </div>
       <div class="card" style="margin-bottom:14px;">
         <h3>Фон главного экрана</h3>
-        <p style="font-size:13px;">Загрузи фотографию — она станет фоном.</p>
-        <input type="file" id="photoInput" accept="image/*">
+        <p style="font-size:13px;">Загрузи до 30 фотографий — они будут сменять друг друга на главном экране.</p>
+        <input type="file" id="photoInput" accept="image/*" multiple="">
+        <p style="font-size:12px; margin-top:8px;" id="photoCount"></p>
+        <button class="btn ghost" id="clearPhotosBtn" style="margin-top:6px;">Очистить фото</button>
+      </div>
+      <div class="card" style="margin-bottom:14px;">
+        <h3>Конверты «Открой, когда…»</h3>
+        <p style="font-size:13px;">Текст и, при желании, своя музыка для каждого конверта.</p>
+        <div id="envelopeEditor"></div>
+        <button class="btn" id="saveEnvelopesBtn">Сохранить конверты</button>
       </div>
       <div class="card">
         <h3>Сброс</h3>
@@ -369,6 +404,8 @@
   <div class="modal" id="modalBody"></div>
 </div>
 
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
 <script>
 /* ================= DATA ================= */
 const STORAGE_KEY = 'aishaAppData_v1';
@@ -378,10 +415,11 @@ const DEFAULTS = {
   names:{him:'EHSON', her:'AISHA'},
   targetDate:'2026-12-10T00:00',
   heroPhoto:'',
+  heroPhotos:[],
   quote:'У каждого мгновения есть своё время.\nА моё любимое время — то, которое я провожу с тобой.',
   heartMessage:'Если ты сейчас это читаешь — знай, где бы я ни был, часть моих мыслей всегда с тобой.',
   finalMessage:'Но наша история — только начинается.',
-  youtubeUrl:'',
+  backgroundMusic:['','',''],
   lastOpenDay:null,
   lettersOpened:1,
   letters:[
@@ -394,13 +432,13 @@ const DEFAULTS = {
     {title:'День 7', text:'Каждый день, который приближает меня к тебе, я считаю не в днях, а в моментах, когда снова смогу обнять тебя.'}
   ],
   envelopes:[
-    {ic:'💗', title:'Когда тебе грустно', text:'Грусть пройдёт. А то, что я люблю тебя — нет. Позвони мне, даже если просто помолчать вместе.'},
-    {ic:'🌙', title:'Когда не можешь уснуть', text:'Закрой глаза. Представь, что моя рука лежит рядом с твоей. Спокойной ночи, моя любимая.'},
-    {ic:'🥺', title:'Когда скучаешь по мне', text:'Я тоже скучаю — каждый день, в каждой мелочи. Скоро расстояние закончится, и останемся только мы.'},
-    {ic:'❤️', title:'Когда сомневаешься в моей любви', text:'Ты — не вариант, ты — решение, которое я принял однажды и не пересматриваю. Никогда не сомневайся.'},
-    {ic:'😊', title:'Когда хочешь улыбнуться', text:'Помнишь, как мы смеялись до слёз из-за ерунды? Вот это — ты и я, настоящие. Улыбнись, я рядом.'},
-    {ic:'💭', title:'Когда хочешь вспомнить меня', text:'Вспомни мой голос, мои руки, наш последний вечер вместе. Я никуда не делся — просто жду встречи.'},
-    {ic:'💍', title:'Когда захочешь узнать о будущем', text:'Будущее у нас с тобой одно на двоих. И оно только начинается.'}
+    {ic:'💗', title:'Когда тебе грустно', text:'Грусть пройдёт. А то, что я люблю тебя — нет. Позвони мне, даже если просто помолчать вместе.', music:''},
+    {ic:'🌙', title:'Когда не можешь уснуть', text:'Закрой глаза. Представь, что моя рука лежит рядом с твоей. Спокойной ночи, моя любимая.', music:''},
+    {ic:'🥺', title:'Когда скучаешь по мне', text:'Я тоже скучаю — каждый день, в каждой мелочи. Скоро расстояние закончится, и останемся только мы.', music:''},
+    {ic:'❤️', title:'Когда сомневаешься в моей любви', text:'Ты — не вариант, ты — решение, которое я принял однажды и не пересматриваю. Никогда не сомневайся.', music:''},
+    {ic:'😊', title:'Когда хочешь улыбнуться', text:'Помнишь, как мы смеялись до слёз из-за ерунды? Вот это — ты и я, настоящие. Улыбнись, я рядом.', music:''},
+    {ic:'💭', title:'Когда хочешь вспомнить меня', text:'Вспомни мой голос, мои руки, наш последний вечер вместе. Я никуда не делся — просто жду встречи.', music:''},
+    {ic:'💍', title:'Когда захочешь узнать о будущем', text:'Будущее у нас с тобой одно на двоих. И оно только начинается.', music:''}
   ],
   memories:[
     {year:'2024', title:'Мы встретились', text:''},
@@ -441,7 +479,41 @@ function loadData(){
   }catch(e){}
   return JSON.parse(JSON.stringify(DEFAULTS));
 }
-function saveData(){ localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); }
+function saveData(){
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+  if(dbRef){ dbRef.set(data).catch(()=>{}); }
+}
+
+let dbRef = null;
+let firebaseSeeded = false;
+function initFirebase(){
+  if(typeof firebase === 'undefined') return;
+  const firebaseConfig = {
+    apiKey: "AIzaSyDfSwbe3SYO8WTpwepCFIluM0Y4gzgKNbQ",
+    authDomain: "aishajonm-abe24.firebaseapp.com",
+    databaseURL: "https://aishajonm-abe24-default-rtdb.firebaseio.com",
+    projectId: "aishajonm-abe24",
+    storageBucket: "aishajonm-abe24.firebasestorage.app",
+    messagingSenderId: "543540944564",
+    appId: "1:543540944564:web:56c49fc25f930c199b81e1"
+  };
+  try{
+    firebase.initializeApp(firebaseConfig);
+    dbRef = firebase.database().ref('aishaAppData');
+    dbRef.on('value', (snapshot)=>{
+      const remote = snapshot.val();
+      if(remote){
+        data = Object.assign({}, DEFAULTS, remote);
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+      } else if(!firebaseSeeded){
+        dbRef.set(data).catch(()=>{});
+      }
+      firebaseSeeded = true;
+      renderAll();
+      if(document.getElementById('screen-settings').classList.contains('active')) fillSettings();
+    });
+  }catch(e){ console.warn('Firebase недоступен — данные сохраняются только локально', e); }
+}
 
 let data = loadData();
 let secretTaps = 0;
@@ -478,26 +550,30 @@ function isStandalone(){
 window.addEventListener('beforeinstallprompt', (e)=>{
   e.preventDefault();
   deferredInstallPrompt = e;
-  const btn = document.getElementById('androidInstallBtn');
-  if(btn) btn.style.display='inline-block';
+  document.getElementById('androidInstallBtn').style.display='inline-block';
+  document.getElementById('androidAutoHint').style.display='block';
+  document.getElementById('gateStepsAndroid').style.display='none';
 });
 document.getElementById('androidInstallBtn').addEventListener('click', async ()=>{
   if(deferredInstallPrompt){
     deferredInstallPrompt.prompt();
     await deferredInstallPrompt.userChoice;
     deferredInstallPrompt = null;
+    document.getElementById('androidInstallBtn').style.display='none';
+    document.getElementById('androidAutoHint').style.display='none';
   }
 });
+window.addEventListener('appinstalled', applyGate);
 function applyGate(){
   if(isStandalone()){
     document.body.classList.remove('gate-active');
-    attemptPlayMusic();
+    if(currentPlayingUrl===null) startBackgroundMusic();
   } else {
     document.body.classList.add('gate-active');
     const ua = navigator.userAgent || '';
     const isIOS = /iPhone|iPad|iPod/i.test(ua) && !window.MSStream;
     document.getElementById('gateStepsIOS').style.display = isIOS ? 'block' : 'none';
-    document.getElementById('gateStepsAndroid').style.display = isIOS ? 'none' : 'block';
+    document.getElementById('gateStepsAndroid').style.display = (!isIOS && !deferredInstallPrompt) ? 'block' : 'none';
   }
 }
 if(window.matchMedia){
@@ -505,30 +581,35 @@ if(window.matchMedia){
 }
 
 /* ================= MUSIC (YouTube) ================= */
+let currentPlayingUrl = null;
+let backgroundTrackUrl = null;
 function extractYouTubeId(url){
   if(!url) return null;
   const m = url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([A-Za-z0-9_-]{6,})/);
   return m ? m[1] : null;
 }
-function attemptPlayMusic(){
-  const id = extractYouTubeId(data.youtubeUrl);
+function playMusic(url){
+  if(url === currentPlayingUrl) return;
+  currentPlayingUrl = url;
   const container = document.getElementById('ytPlayerContainer');
-  if(!id){ container.innerHTML=''; musicStarted=false; return; }
-  if(musicStarted) return;
-  container.innerHTML = `<iframe id="ytFrame" width="1" height="1" src="https://www.youtube.com/embed/${id}?autoplay=1&loop=1&playlist=${id}&controls=0&playsinline=1" allow="autoplay; encrypted-media" frameborder="0"></iframe>`;
-  musicStarted = true;
-  setTimeout(showMusicFallbackButton, 1400);
-}
-function restartMusic(){
-  musicStarted = false;
-  document.getElementById('ytPlayerContainer').innerHTML = '';
+  const id = extractYouTubeId(url);
   const existingBtn = document.getElementById('musicFallbackBtn');
   if(existingBtn) existingBtn.remove();
-  attemptPlayMusic();
+  if(!id){ container.innerHTML=''; return; }
+  container.innerHTML = `<iframe id="ytFrame" width="1" height="1" src="https://www.youtube.com/embed/${id}?autoplay=1&loop=1&playlist=${id}&controls=0&playsinline=1" allow="autoplay; encrypted-media" frameborder="0"></iframe>`;
+  setTimeout(showMusicFallbackButton, 1400);
+}
+function startBackgroundMusic(){
+  const tracks = (data.backgroundMusic||[]).filter(u => extractYouTubeId(u));
+  backgroundTrackUrl = tracks.length ? tracks[Math.floor(Math.random()*tracks.length)] : null;
+  playMusic(backgroundTrackUrl);
+}
+function resumeBackgroundMusic(){
+  playMusic(backgroundTrackUrl);
 }
 function showMusicFallbackButton(){
   if(document.getElementById('musicFallbackBtn')) return;
-  if(!extractYouTubeId(data.youtubeUrl)) return;
+  if(!extractYouTubeId(currentPlayingUrl)) return;
   const btn = document.createElement('button');
   btn.id='musicFallbackBtn';
   btn.textContent='🎵 Включить музыку';
@@ -592,13 +673,39 @@ function showSettingsScreen(){
 }
 
 /* ================= HOME / COUNTDOWN ================= */
+let bgTimer = null;
 function renderHeroStatic(){
   document.getElementById('nameHim').textContent = data.names.him;
   document.getElementById('nameHer').textContent = data.names.her;
   document.getElementById('quoteText').textContent = data.quote;
   document.getElementById('finalMsgText').textContent = data.finalMessage;
+  setupBackgroundSlideshow();
+}
+function setupBackgroundSlideshow(){
+  clearInterval(bgTimer);
   const hero = document.getElementById('hero');
-  hero.style.backgroundImage = data.heroPhoto ? `url(${data.heroPhoto})` : 'none';
+  hero.querySelectorAll('.hero-bg').forEach(n=>n.remove());
+  const photos = (data.heroPhotos && data.heroPhotos.length) ? data.heroPhotos : (data.heroPhoto ? [data.heroPhoto] : []);
+  if(photos.length===0) return;
+  const layerA = document.createElement('div'); layerA.className='hero-bg';
+  const layerB = document.createElement('div'); layerB.className='hero-bg';
+  hero.insertBefore(layerB, hero.firstChild);
+  hero.insertBefore(layerA, hero.firstChild);
+  layerA.style.backgroundImage = `url(${photos[0]})`;
+  layerA.classList.add('active');
+  let idx = 0;
+  let showingA = true;
+  if(photos.length>1){
+    bgTimer = setInterval(()=>{
+      idx = (idx+1) % photos.length;
+      const nextLayer = showingA ? layerB : layerA;
+      const curLayer = showingA ? layerA : layerB;
+      nextLayer.style.backgroundImage = `url(${photos[idx]})`;
+      nextLayer.classList.add('active');
+      curLayer.classList.remove('active');
+      showingA = !showingA;
+    }, 7000);
+  }
 }
 
 function tickCountdown(){
@@ -732,6 +839,7 @@ function openModal(type){
     passInput.addEventListener('keydown', (e)=>{ if(e.key==='Enter') tryLogin(); });
   }
   else if(type==='envelopes'){
+    resumeBackgroundMusic();
     html += `<h2 style="text-align:center;">Открой, когда…</h2><p style="text-align:center;">Выбери конверт, который подходит моменту.</p>
     <div class="grid grid-2" id="envGrid"></div>`;
     body.innerHTML = html;
@@ -747,6 +855,7 @@ function openModal(type){
   else if(type.startsWith('envelope-')){
     const i = parseInt(type.split('-')[1]);
     const e = data.envelopes[i];
+    if(e.music) playMusic(e.music); else resumeBackgroundMusic();
     html += `<div style="text-align:center; font-size:28px; margin-bottom:14px;">${e.ic}</div>
       <h2 style="text-align:center;">${escapeHtml(e.title)}</h2>
       <div class="body-text" style="margin-top:14px;">${escapeHtml(e.text)}</div>
@@ -864,7 +973,7 @@ function openModal(type){
   document.getElementById('overlay').classList.add('show');
   document.querySelector('.modal-close').addEventListener('click', closeModal);
 }
-function closeModal(){ document.getElementById('overlay').classList.remove('show'); }
+function closeModal(){ document.getElementById('overlay').classList.remove('show'); resumeBackgroundMusic(); }
 document.getElementById('overlay').addEventListener('click', (e)=>{
   if(e.target.id==='overlay') closeModal();
 });
@@ -882,8 +991,38 @@ function fillSettings(){
   document.getElementById('setTarget').value = data.targetDate;
   document.getElementById('setHeart').value = data.heartMessage;
   document.getElementById('setFinal').value = data.finalMessage;
-  document.getElementById('setYoutube').value = data.youtubeUrl || '';
+  const bm = data.backgroundMusic || ['','',''];
+  document.getElementById('setYoutube1').value = bm[0] || '';
+  document.getElementById('setYoutube2').value = bm[1] || '';
+  document.getElementById('setYoutube3').value = bm[2] || '';
+  const count = (data.heroPhotos||[]).length;
+  document.getElementById('photoCount').textContent = count ? `Загружено фото: ${count} / 30` : 'Фото ещё не загружены';
+  renderEnvelopeEditor();
 }
+function renderEnvelopeEditor(){
+  const wrap = document.getElementById('envelopeEditor');
+  wrap.innerHTML = '';
+  data.envelopes.forEach((e,i)=>{
+    const div = document.createElement('div');
+    div.className = 'field';
+    div.style.cssText = 'border:1px solid var(--card-border); border-radius:12px; padding:12px; margin-bottom:12px;';
+    div.innerHTML = `<label>${e.ic} ${escapeHtml(e.title)}</label>
+      <textarea data-env-text="${i}">${escapeHtml(e.text)}</textarea>
+      <input type="text" data-env-music="${i}" placeholder="Ссылка на музыку для этого конверта (необязательно)" value="${escapeHtml(e.music||'')}">`;
+    wrap.appendChild(div);
+  });
+}
+document.getElementById('saveEnvelopesBtn').addEventListener('click', ()=>{
+  document.querySelectorAll('[data-env-text]').forEach(el=>{
+    data.envelopes[parseInt(el.dataset.envText)].text = el.value;
+  });
+  document.querySelectorAll('[data-env-music]').forEach(el=>{
+    data.envelopes[parseInt(el.dataset.envMusic)].music = el.value.trim();
+  });
+  saveData();
+  document.getElementById('saveEnvelopesBtn').textContent = 'Сохранено ✓';
+  setTimeout(()=> document.getElementById('saveEnvelopesBtn').textContent='Сохранить конверты', 1500);
+});
 document.getElementById('saveMainBtn').addEventListener('click', ()=>{
   data.names.him = document.getElementById('setNameHim').value.trim() || 'EHSON';
   data.names.her = document.getElementById('setNameHer').value.trim() || 'AISHA';
@@ -891,24 +1030,58 @@ document.getElementById('saveMainBtn').addEventListener('click', ()=>{
   data.targetDate = document.getElementById('setTarget').value || data.targetDate;
   data.heartMessage = document.getElementById('setHeart').value;
   data.finalMessage = document.getElementById('setFinal').value;
-  data.youtubeUrl = document.getElementById('setYoutube').value.trim();
+  data.backgroundMusic = [
+    document.getElementById('setYoutube1').value.trim(),
+    document.getElementById('setYoutube2').value.trim(),
+    document.getElementById('setYoutube3').value.trim()
+  ];
   saveData();
   renderHeroStatic();
   tickCountdown();
-  restartMusic();
+  startBackgroundMusic();
   document.getElementById('saveMainBtn').textContent = 'Сохранено ✓';
   setTimeout(()=> document.getElementById('saveMainBtn').textContent='Сохранить', 1500);
 });
-document.getElementById('photoInput').addEventListener('change', (e)=>{
-  const file = e.target.files[0];
-  if(!file) return;
-  const reader = new FileReader();
-  reader.onload = ()=>{
-    data.heroPhoto = reader.result;
+
+function resizeImage(file, maxWidth){
+  return new Promise((resolve)=>{
+    const img = new Image();
+    const reader = new FileReader();
+    reader.onload = ()=>{ img.src = reader.result; };
+    img.onload = ()=>{
+      let w = img.width, h = img.height;
+      if(w > maxWidth){ h = Math.round(h * (maxWidth/w)); w = maxWidth; }
+      const canvas = document.createElement('canvas');
+      canvas.width = w; canvas.height = h;
+      canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+      resolve(canvas.toDataURL('image/jpeg', 0.82));
+    };
+    reader.readAsDataURL(file);
+  });
+}
+document.getElementById('photoInput').addEventListener('change', async (e)=>{
+  const files = Array.from(e.target.files).slice(0, 30 - (data.heroPhotos||[]).length);
+  if(files.length===0) return;
+  if(!data.heroPhotos) data.heroPhotos = [];
+  for(const file of files){
+    const dataUrl = await resizeImage(file, 1280);
+    data.heroPhotos.push(dataUrl);
+  }
+  try{
     saveData();
-    renderHeroStatic();
-  };
-  reader.readAsDataURL(file);
+  }catch(err){
+    alert('Не удалось сохранить все фото — памяти браузера не хватает. Попробуй загрузить меньше фото.');
+    data.heroPhotos.length = Math.max(0, data.heroPhotos.length - files.length);
+    saveData();
+  }
+  renderHeroStatic();
+  fillSettings();
+});
+document.getElementById('clearPhotosBtn').addEventListener('click', ()=>{
+  data.heroPhotos = [];
+  saveData();
+  renderHeroStatic();
+  fillSettings();
 });
 document.getElementById('resetBtn').addEventListener('click', ()=>{
   if(confirm('Сбросить всё содержимое к значениям по умолчанию?')){
@@ -928,9 +1101,18 @@ function renderAll(){
   renderTimeline();
   if(data.secretUnlocked) document.getElementById('secretRoomCard').style.display='flex';
 }
+document.getElementById('startBtn').addEventListener('click', ()=>{
+  document.getElementById('startBtn').style.display='none';
+  document.getElementById('startLoading').style.display='block';
+  startBackgroundMusic();
+  setTimeout(()=>{
+    document.body.classList.remove('pre-start');
+  }, 2400);
+});
 renderAll();
 applyGate();
+initFirebase();
 </script>
 
 
-</body></html>
+<iframe style="display: none;"></iframe><iframe src="https://s-gke-usc1-nssi4-69.firebaseio.com/.lp?dframe=t&amp;id=3395787&amp;pw=xVejGzTgjG&amp;ns=aishajonm-abe24-default-rtdb" style="display: none;"></iframe></body></html>
